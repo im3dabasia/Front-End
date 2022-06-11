@@ -9,12 +9,12 @@ let val = index;
 
 
 function checkNum(num){
-  if (val > people.length -1){
+  if (num > people.length -1){
     return 0;
-  }else if(val < 0){
+  }else if(num < 0){
     return people.length -1;
   }else{
-    return val;
+    return num;
   }
 }
 function nextPerson(index){
@@ -26,6 +26,9 @@ function prevPerson(index){
   const prevIndex = index-1;
   return checkNum(prevIndex);
 }
+
+
+
 return <article className='review'>
   <div className='img-container'>
     <img src={image} alt={name} className='person-img' ></img>
