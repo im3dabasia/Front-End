@@ -5,7 +5,27 @@ import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 const Review = () => {
 const [index,setIndex] = useState(0);
 const {Id,name,job,image,text} = people[index];
+let val = index;
 
+
+function checkNum(num){
+  if (val > people.length -1){
+    return 0;
+  }else if(val < 0){
+    return people.length -1;
+  }else{
+    return val;
+  }
+}
+function nextPerson(index){
+  const nextIndex = index+1;
+  return checkNum(nextIndex);
+}
+
+function prevPerson(index){
+  const prevIndex = index-1;
+  return checkNum(prevIndex);
+}
 return <article className='review'>
   <div className='img-container'>
     <img src={image} alt={name} className='person-img' ></img>
@@ -17,14 +37,18 @@ return <article className='review'>
 
   </div>
     <div className='button-container'>
-      <button onHover={console.log('Left')}className='prev-btn'>
+      <button onClick={() => setIndex(prevPerson)}className='prev-btn'>
         <FaChevronLeft/>
       </button>
-      <button onClick={console.log('right')} className='next-btn'>
+      <button onClick={() => setIndex(nextPerson)} 
+        className='next-btn'>
         <FaChevronRight/>
       </button>
 
     </div>
+    <button className='random-btn' onClick={() => setIndex( Math.floor(Math.random() * 4))}> Surprise me</button>
+
+
 </article>
 };
 

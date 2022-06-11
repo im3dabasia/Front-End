@@ -5,7 +5,6 @@ function App() {
   <section className='container'>
     <div className='title'>
       <h2>Our Reviews</h2>
-      
       </div>
     <div className='underline'></div>
     <Review></Review>
