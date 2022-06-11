@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import {React, useState } from 'react';
 import {rawData} from './data';
 import List from './List';
 function App() {
 
-  const [people,setPeople] = useState(rawData);
+  const [people,setPeople] = useState(0);
 
  
 
