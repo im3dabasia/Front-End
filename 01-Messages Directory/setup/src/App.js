@@ -1,14 +1,13 @@
-import {React, useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
+
 import {rawData} from './data';
 import List from './List';
 function App() {
 
-  const [people,setPeople] = useState(0);
+  const [people,setPeople] = useState(rawData);
 
- 
-
-  return (
-    <main>
+  return (<main>
       <section className='container'>
         <h3>{people.length} Messages Today</h3>
         <List people={people}/>
