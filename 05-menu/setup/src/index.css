@@ -157,6 +157,7 @@ Menu
   margin-right: auto;
 }
 .btn-container {
+  margin-top:2rem;
   margin-bottom: 4rem;
   display: flex;
   justify-content: center;
@@ -185,6 +186,7 @@ Menu
   display: grid;
   gap: 3rem 2rem;
   justify-items: center;
+  margin-top: 2rem ;
 }
 .menu-item {
   display: grid;
