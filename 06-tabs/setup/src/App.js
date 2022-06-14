@@ -23,27 +23,30 @@ function App() {
     return
   }, []);
 
+  console.log(jobs)
   if (loading) {
     return <section className='loading section'>
       <h1>loading...</h1>
     </section>
   }
 
-  const [id, order, title, dates, duties, company] = jobs[1];
+  const {id, order, title, dates, duties, company} = jobs[value];
   return (
     <div>
 
-      <div className='  btn-container'>
-
-
-
         <section className='section'>
+
           <div className='title'>
-            <h2 className='title'>Experience</h2>
+            <h2>Experience</h2>
             <div className='underline'></div>
           </div>
+
           <div className='job-center'>
             {/* button container */}
+            <div className='btn-container '>
+              {jobs.map((item, index) => { return <button className={value === index ? "active-btn job-btn" : 'job-btn'}  onClick={() => { setValue(index)}}>{item.company}</button>})}
+
+            </div>
             {/* job info */}
 
 
@@ -55,39 +58,21 @@ function App() {
 
               {
                 duties.map((item,index) => {
-                  return <div key ={index} > </div>
+                  return <div key ={index}>
+                    <FaAngleDoubleRight className='job-icon'>
+                      
+                    </FaAngleDoubleRight> 
+                    {item}  
+                  
+                  </div>
                 } )
               }
-
-
-
-
-
-
-
             </article>
           </div>
-          {/* <p className='job-desc'>{duties.map((item, index) => return <div className='job-date' key={index}>
-
-            <FaAngleDoubleRight className='job-icon'>
-            </FaAngleDoubleRight>
-            {item}
-            )}
-            </p> */}
-
-          </div>  
-          {/* </p> */}
-          <button className='btn'>More Info</button>
-
-
         </section>
       </div>
-    </div>
-
-
-  )
-
-}
+  );
+            }
 
 export default App
 
