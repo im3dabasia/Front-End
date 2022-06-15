@@ -3,29 +3,45 @@ import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { FaQuoteRight } from 'react-icons/fa';
 import data from './data';
 function App() {
-  const [review,setReview] = useState([]);
+  const [review,setReview] = useState(data);
   const [index,setIndex] = useState(1);
 
 
-  const checkIndex =(num) =>{
-    if (num > (data.length -1)){
-      return 0
+  useEffect( () => {
+    const lastIndex = review.length -1;
+    if (index < 0){
+      setIndex(lastIndex);
     }
-  }
+    if (index > (review.length -1)){
+      setIndex(0);
+      
+    }
+
+  } ,[index,review] )
+
+
+
+  // for sliding automation 
+
+  useEffect( () => {
+    let slider =  setInterval(() => {
+      setIndex(index+1);}, 5000);
+
+
+      return() => clearInterval
+    }, [index]);
+
+  
 
   const nextSlide = () => {
     const temp = index
-    setIndex(checkIndex(temp+1))
+    setIndex((temp+1))
   } 
 
   const lastSlide = () => {
     const temp = index
-    setIndex(checkIndex(temp-1))
+    setIndex((temp-1))
   } 
-
-
-  
-
 
 
 
@@ -36,14 +52,14 @@ function App() {
 
 
 
-      {data.map((item,revIndex) => {
+      {review.map((item,revIndex) => {
           const {id,image,name, title,quote} = item;
 
           let position = 'nextSlide';
           if (revIndex === index ){
             position = 'activeSlide'
           }
-          if (revIndex === (index-1)){
+          if (revIndex === (index-1) || index === 0 && revIndex === (data.length -1)){
             position = 'lastSlide'
           }
         
@@ -51,7 +67,7 @@ function App() {
           return(
             <article className={position} key={id}>
               <img src={image} className='person-img'></img>
-              <h4> {title}</h4>
+              <h4> {name}</h4>
               <p>{title}</p>
               <p className='text'>{quote}</p>
 

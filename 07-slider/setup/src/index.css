@@ -163,7 +163,7 @@ Slider
   position: relative;
   display: flex;
   flex-direction: column;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .person-img {
   border-radius: 50%;
@@ -248,12 +248,10 @@ article.activeSlide {
   transform: translateX(0);
 }
 article.lastSlide {
-  opacity: 1;
 
   transform: translateX(-100%);
 }
 article.nextSlide {
-  opacity: 1;
 
   transform: translateX(100%);
 }
